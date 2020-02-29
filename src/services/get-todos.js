@@ -8,7 +8,7 @@ const getTodos= async(req,res)=>{
     try{
         const[results]= await poolPromise.query(
             'SELECT id, title, description, responsible, is_complete as isComplete FROM todo ORDER BY id DESC LIMIT ? OFFSET ?'
-        ,[limit.offset]);
+        ,[limit, offset]);
     res.send(results);
 }catch(error){
     res.status(500).send({
